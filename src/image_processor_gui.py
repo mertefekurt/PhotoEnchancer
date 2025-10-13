@@ -33,6 +33,7 @@ class ImageProcessorGUI:
         
         self.root.configure(bg=self.colors['bg'])
         
+        # setup ttk styling
         self.style = ttk.Style()
         self.style.theme_use('clam')
         
