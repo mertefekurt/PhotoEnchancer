@@ -443,9 +443,11 @@ class ImageProcessorGUI:
                 messagebox.showinfo("Success", f"{processed_count} images processed successfully!")
             
         except Exception as e:
+            # handle any errors during processing
             messagebox.showerror("Error", f"An error occurred: {str(e)}")
         
         finally:
+            # re-enable process button and reset flag
             self.process_button['state'] = 'normal'
             self.cancel_flag = False
 
