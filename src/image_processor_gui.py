@@ -358,6 +358,7 @@ class ImageProcessorGUI:
             self.input_folder.set(folder)
 
     def select_output_folder(self):
+        # open folder selection dialog for output
         folder = filedialog.askdirectory(title="Select Output Folder", initialdir=os.path.expanduser("~"))
         if folder:
             self.output_folder.set(folder)
