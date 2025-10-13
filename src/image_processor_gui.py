@@ -88,6 +88,7 @@ class ImageProcessorGUI:
         self.create_exit_button()
         self.center_window()
         
+        # flag for canceling process
         self.cancel_flag = False
 
     def load_settings(self):
