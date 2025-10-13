@@ -4,7 +4,7 @@ A modern, open-source photo processing application with a beautiful UI that auto
 
 ## 🎨 Features
 
-- **Batch Processing**: Process multiple images at once with ease
+- **Batch Processing**: Process multiple images at once with ease  
 - **Adjustable Enhancement Settings**:
   - ☀️ Brightness (0.5 - 2.0)
   - 🎨 Contrast (0.5 - 2.0)
