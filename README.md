@@ -42,7 +42,7 @@ A modern, open-source photo processing application with a beautiful UI that auto
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/PhotoEnchancer.git
+   git clone https://github.com/mertefekurt/PhotoEnchancer.git
    cd PhotoEnchancer
    ```
 
