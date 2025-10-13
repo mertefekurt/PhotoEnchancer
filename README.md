@@ -13,7 +13,7 @@ A modern, open-source photo processing application with a beautiful UI that auto
 - **Modern UI**: Clean, dark-themed interface with intuitive controls  
 - **Real-time Preview**: Visual feedback with emoji indicators  
 - **Progress Tracking**: Monitor your processing status  
-- **Cancel Anytime**: Stop processing whenever you need
+- **Cancel Anytime**: Stop processing whenever you need  
 
 ## Screenshots
 
