@@ -5,6 +5,7 @@ from PIL import Image, ImageEnhance
 # image enhancement processor class
 class ImageEnhancer:
     def __init__(self):
+        # default enhancement values
         self.brightness_factor = 1.27
         self.contrast_factor = 1.1
         self.saturation_factor = 1.05
