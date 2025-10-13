@@ -18,6 +18,7 @@ class ImageProcessorGUI:
         
         self.load_settings()
         
+        # color palette for the ui
         self.colors = {
             'bg': '#1a1a2e',
             'bg_secondary': '#16213e',
