@@ -411,6 +411,7 @@ class ImageProcessorGUI:
                 messagebox.showwarning("Warning", "No images found to process!")
                 return
             
+            # process each image file
             processed_count = 0
             for i, filename in enumerate(image_files):
                 if self.cancel_flag:
