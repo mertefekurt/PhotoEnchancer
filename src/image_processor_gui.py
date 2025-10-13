@@ -393,9 +393,10 @@ class ImageProcessorGUI:
         thread.start()
 
     def process_images(self):
+        # main processing loop for batch image enhancement
         try:
             enhancer = ImageEnhancer()
-            # Update enhancer settings from GUI and save them
+            # update enhancer settings from gui and save them
             enhancer.brightness_factor = self.brightness_var.get()
             enhancer.contrast_factor = self.contrast_var.get()
             enhancer.saturation_factor = self.saturation_var.get()
