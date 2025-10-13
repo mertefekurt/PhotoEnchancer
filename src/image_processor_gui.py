@@ -211,6 +211,7 @@ class ImageProcessorGUI:
         return slider
 
     def reset_settings(self):
+        # reset all sliders to default values
         self.brightness_var.set(1.27)
         self.contrast_var.set(1.1)
         self.saturation_var.set(1.05)
