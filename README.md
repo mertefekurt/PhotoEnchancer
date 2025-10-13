@@ -75,9 +75,9 @@ A modern, open-source photo processing application with a beautiful UI that auto
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest new features
-- Submit pull requests
+- 🐛 Report bugs
+- 💡 Suggest new features
+- 🔧 Submit pull requests
 
 ## 📄 License
 
