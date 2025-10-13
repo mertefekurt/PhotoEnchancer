@@ -48,7 +48,7 @@ A modern, open-source photo processing application with a beautiful UI that auto
 
 2. **Install dependencies**:
    ```bash
-   pip install -r requirements.txt
+   pip3 install -r requirements.txt
    ```
 
 3. **Run the application**:
