@@ -105,6 +105,7 @@ class ImageProcessorGUI:
             self.saturation_value = 1.05
 
     def save_settings(self):
+        # save current settings to json file
         settings = {
             'brightness': self.brightness_var.get(),
             'contrast': self.contrast_var.get(),
