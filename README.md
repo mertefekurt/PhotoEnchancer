@@ -10,7 +10,7 @@ A modern, open-source photo processing application with a beautiful UI that auto
   - 🎨 Contrast (0.5 - 2.0)
   - 🌈 Saturation (0.5 - 2.0)
 - **Auto-Save Settings**: Your preferences are automatically saved
-- **Modern UI**: Clean, dark-themed interface with intuitive controls
+- **Modern UI**: Clean, dark-themed interface with intuitive controls  
 - **Real-time Preview**: Visual feedback with emoji indicators
 - **Progress Tracking**: Monitor your processing status
 - **Cancel Anytime**: Stop processing whenever you need
