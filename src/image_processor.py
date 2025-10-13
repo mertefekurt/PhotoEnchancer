@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from PIL import Image, ImageEnhance
 
+# image enhancement processor class
 class ImageEnhancer:
     def __init__(self):
         self.brightness_factor = 1.27
