@@ -79,9 +79,11 @@ class ImageProcessorGUI:
                            borderwidth=0,
                            sliderrelief='flat')
         
+        # create main container frame
         self.main_frame = ttk.Frame(root, style='Custom.TFrame')
         self.main_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=10)
         
+        # build all ui sections
         self.create_header()
         self.create_settings_section()
         self.create_folder_selection()
