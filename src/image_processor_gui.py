@@ -442,6 +442,7 @@ class ImageProcessorGUI:
             self.cancel_flag = False
 
 def main():
+    # initialize and run the application
     root = tk.Tk()
     app = ImageProcessorGUI(root)
     root.mainloop()
