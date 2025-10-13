@@ -53,7 +53,7 @@ A modern, open-source photo processing application with a beautiful UI that auto
 
 3. **Run the application**:
    ```bash
-   python src/image_processor_gui.py
+   python3 src/image_processor_gui.py
    ```
 
 ## 📖 How to Use
