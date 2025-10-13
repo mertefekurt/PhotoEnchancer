@@ -67,10 +67,10 @@ A modern, open-source photo processing application with a beautiful UI that auto
 
 ## 🛠️ Technologies Used
 
-- **Python 3.x**: Core programming language
-- **Tkinter**: For the graphical user interface
-- **Pillow (PIL)**: Image processing library
-- **OpenCV**: Additional image processing capabilities
+- **Python 3.x**: Core programming language  
+- **Tkinter**: For the graphical user interface  
+- **Pillow (PIL)**: Image processing library  
+- **OpenCV**: Additional image processing capabilities  
 
 ## 🤝 Contributing
 
