@@ -10,52 +10,70 @@ from io import BytesIO
 class ImageProcessorGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Photo Enhancer")
-        self.root.geometry("800x700")
+        self.root.title("Photo Enhancer ✨")
+        self.root.geometry("900x750")
+        self.root.resizable(False, False)
         
         self.load_settings()
         
         self.colors = {
-            'bg': '#2C3E50',
-            'fg': '#ECF0F1',
-            'accent': '#3498DB',
-            'success': '#2ECC71',
-            'warning': '#E74C3C',
-            'slider': '#3498DB'
+            'bg': '#1a1a2e',
+            'bg_secondary': '#16213e',
+            'fg': '#eaeaea',
+            'accent': '#0f4c75',
+            'accent_light': '#3282b8',
+            'success': '#27ae60',
+            'warning': '#e74c3c',
+            'slider': '#3282b8',
+            'card': '#0e1929'
         }
         
         self.root.configure(bg=self.colors['bg'])
         
         self.style = ttk.Style()
+        self.style.theme_use('clam')
+        
         self.style.configure('Custom.TButton', 
-                           padding=10, 
-                           font=('Helvetica', 10, 'bold'),
-                           background=self.colors['accent'])
+                           padding=12, 
+                           font=('Segoe UI', 10, 'bold'),
+                           background=self.colors['accent_light'],
+                           foreground='white',
+                           borderwidth=0,
+                           focuscolor='none')
+        
+        self.style.map('Custom.TButton',
+                      background=[('active', self.colors['accent'])])
         
         self.style.configure('Custom.TFrame', 
                            background=self.colors['bg'])
         
         self.style.configure('Custom.TLabelframe', 
-                           padding=15,
-                           font=('Helvetica', 11, 'bold'),
-                           background=self.colors['bg'],
-                           foreground=self.colors['fg'])
+                           padding=20,
+                           font=('Segoe UI', 11, 'bold'),
+                           background=self.colors['card'],
+                           foreground=self.colors['fg'],
+                           borderwidth=1,
+                           relief='flat')
+        
+        self.style.configure('Custom.TLabelframe.Label',
+                           background=self.colors['card'],
+                           foreground=self.colors['accent_light'])
         
         self.style.configure('Title.TLabel', 
-                           font=('Helvetica', 24, 'bold'),
-                           foreground=self.colors['accent'],
+                           font=('Segoe UI', 28, 'bold'),
+                           foreground=self.colors['accent_light'],
                            background=self.colors['bg'])
         
         self.style.configure('Header.TLabel', 
-                           font=('Helvetica', 12),
+                           font=('Segoe UI', 11),
                            foreground=self.colors['fg'],
-                           background=self.colors['bg'])
+                           background=self.colors['card'])
         
         self.style.configure("Custom.Horizontal.TScale",
-                           background=self.colors['bg'],
-                           troughcolor=self.colors['accent'],
-                           sliderwidth=15,
-                           sliderlength=20)
+                           background=self.colors['card'],
+                           troughcolor=self.colors['bg_secondary'],
+                           borderwidth=0,
+                           sliderrelief='flat')
         
         self.main_frame = ttk.Frame(root, style='Custom.TFrame')
         self.main_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=10)
@@ -93,10 +111,20 @@ class ImageProcessorGUI:
 
     def create_header(self):
         header_frame = ttk.Frame(self.root, style='Custom.TFrame')
-        header_frame.pack(fill=tk.X, padx=20, pady=(20,10))
+        header_frame.pack(fill=tk.X, padx=20, pady=(25,15))
         
-        ttk.Label(header_frame, text="Photo Enhancer", style='Title.TLabel').pack(pady=5)
-        ttk.Label(header_frame, text="Batch Image Processing Tool", style='Header.TLabel').pack()
+        title_label = ttk.Label(header_frame, text="✨ Photo Enhancer", style='Title.TLabel')
+        title_label.pack(pady=(0,5))
+        
+        subtitle_frame = ttk.Frame(header_frame, style='Custom.TFrame')
+        subtitle_frame.pack()
+        
+        subtitle_label = ttk.Label(subtitle_frame, 
+                                   text="Professional Batch Image Processing", 
+                                   font=('Segoe UI', 12),
+                                   foreground='#7f8c8d',
+                                   background=self.colors['bg'])
+        subtitle_label.pack()
 
     def create_settings_section(self):
         settings_frame = ttk.LabelFrame(self.main_frame, 
@@ -109,19 +137,22 @@ class ImageProcessorGUI:
             self.save_settings()
 
         self.create_slider(settings_frame, 
-                         "Brightness", 
+                         "☀️ Brightness", 
                          self.brightness_value,
-                         on_slider_release)
+                         on_slider_release,
+                         "brightness")
         
         self.create_slider(settings_frame, 
-                         "Contrast", 
+                         "🎨 Contrast", 
                          self.contrast_value,
-                         on_slider_release)
+                         on_slider_release,
+                         "contrast")
         
         self.create_slider(settings_frame, 
-                         "Saturation", 
+                         "🌈 Saturation", 
                          self.saturation_value,
-                         on_slider_release)
+                         on_slider_release,
+                         "saturation")
 
         reset_frame = ttk.Frame(settings_frame, style='Custom.TFrame')
         reset_frame.pack(fill=tk.X, padx=5, pady=10)
@@ -132,17 +163,20 @@ class ImageProcessorGUI:
                              style='Custom.TButton')
         reset_btn.pack(side=tk.RIGHT)
 
-    def create_slider(self, parent, label_text, default_value, callback):
+    def create_slider(self, parent, label_text, default_value, callback, var_name):
         frame = ttk.Frame(parent, style='Custom.TFrame')
-        frame.pack(fill=tk.X, padx=10, pady=5)
+        frame.pack(fill=tk.X, padx=15, pady=8)
         
-        ttk.Label(frame, 
-                 text=f"{label_text}:", 
+        label_frame = ttk.Frame(frame, style='Custom.TFrame')
+        label_frame.pack(side=tk.LEFT, padx=(0,10))
+        
+        ttk.Label(label_frame, 
+                 text=label_text, 
                  style='Header.TLabel',
-                 width=10).pack(side=tk.LEFT, padx=5)
+                 width=15).pack(side=tk.LEFT)
         
         var = tk.DoubleVar(value=default_value)
-        setattr(self, f"{label_text.lower()}_var", var)
+        setattr(self, f"{var_name}_var", var)
         
         value_label = ttk.Label(frame, 
                               text=f"{default_value:.2f}",
@@ -178,54 +212,128 @@ class ImageProcessorGUI:
         self.save_settings()
 
     def create_folder_selection(self):
-        folder_frame = ttk.LabelFrame(self.main_frame, text="Folder Selection", style='Custom.TLabelframe')
+        folder_frame = ttk.LabelFrame(self.main_frame, text="📁 Folder Selection", style='Custom.TLabelframe')
         folder_frame.pack(fill=tk.X, pady=(0, 10))
         
         input_frame = ttk.Frame(folder_frame, style='Custom.TFrame')
-        input_frame.pack(fill=tk.X, padx=5, pady=5)
+        input_frame.pack(fill=tk.X, padx=15, pady=8)
         
-        ttk.Label(input_frame, text="Input Folder:", style='Header.TLabel').pack(side=tk.LEFT, padx=5)
+        ttk.Label(input_frame, text="📥 Input:", style='Header.TLabel', width=12).pack(side=tk.LEFT, padx=(0,5))
         self.input_folder = tk.StringVar()
-        ttk.Entry(input_frame, textvariable=self.input_folder, width=50).pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
-        ttk.Button(input_frame, text="Browse", command=self.select_input_folder, style='Custom.TButton').pack(side=tk.LEFT, padx=5)
+        input_entry = tk.Entry(input_frame, 
+                              textvariable=self.input_folder,
+                              font=('Segoe UI', 10),
+                              bg=self.colors['bg_secondary'],
+                              fg=self.colors['fg'],
+                              insertbackground=self.colors['fg'],
+                              relief='flat',
+                              borderwidth=2)
+        input_entry.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True, ipady=5)
+        ttk.Button(input_frame, text="Browse...", command=self.select_input_folder, style='Custom.TButton').pack(side=tk.LEFT, padx=5)
         
         output_frame = ttk.Frame(folder_frame, style='Custom.TFrame')
-        output_frame.pack(fill=tk.X, padx=5, pady=5)
+        output_frame.pack(fill=tk.X, padx=15, pady=8)
         
-        ttk.Label(output_frame, text="Output Folder:", style='Header.TLabel').pack(side=tk.LEFT, padx=5)
+        ttk.Label(output_frame, text="📤 Output:", style='Header.TLabel', width=12).pack(side=tk.LEFT, padx=(0,5))
         self.output_folder = tk.StringVar()
-        ttk.Entry(output_frame, textvariable=self.output_folder, width=50).pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
-        ttk.Button(output_frame, text="Browse", command=self.select_output_folder, style='Custom.TButton').pack(side=tk.LEFT, padx=5)
+        output_entry = tk.Entry(output_frame,
+                               textvariable=self.output_folder,
+                               font=('Segoe UI', 10),
+                               bg=self.colors['bg_secondary'],
+                               fg=self.colors['fg'],
+                               insertbackground=self.colors['fg'],
+                               relief='flat',
+                               borderwidth=2)
+        output_entry.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True, ipady=5)
+        ttk.Button(output_frame, text="Browse...", command=self.select_output_folder, style='Custom.TButton').pack(side=tk.LEFT, padx=5)
 
     def create_progress_section(self):
-        progress_frame = ttk.LabelFrame(self.main_frame, text="Progress", style='Custom.TLabelframe')
+        progress_frame = ttk.LabelFrame(self.main_frame, text="⚡ Processing", style='Custom.TLabelframe')
         progress_frame.pack(fill=tk.X, pady=(0, 10))
         
-        self.progress = ttk.Progressbar(progress_frame, length=300, mode='determinate')
-        self.progress.pack(pady=10, fill=tk.X, padx=10)
+        self.style.configure("Custom.Horizontal.TProgressbar",
+                           background=self.colors['accent_light'],
+                           troughcolor=self.colors['bg_secondary'],
+                           borderwidth=0,
+                           thickness=20)
         
-        self.status_var = tk.StringVar(value="Ready")
-        self.status_label = ttk.Label(progress_frame, textvariable=self.status_var, style='Header.TLabel')
-        self.status_label.pack(pady=5)
+        self.progress = ttk.Progressbar(progress_frame, 
+                                       length=300, 
+                                       mode='determinate',
+                                       style="Custom.Horizontal.TProgressbar")
+        self.progress.pack(pady=15, fill=tk.X, padx=20)
+        
+        self.status_var = tk.StringVar(value="Ready to process images ✓")
+        self.status_label = ttk.Label(progress_frame, 
+                                     textvariable=self.status_var, 
+                                     style='Header.TLabel',
+                                     font=('Segoe UI', 11, 'bold'))
+        self.status_label.pack(pady=(0,15))
         
         button_frame = ttk.Frame(progress_frame, style='Custom.TFrame')
-        button_frame.pack(pady=10)
+        button_frame.pack(pady=(0,10))
         
-        self.process_button = ttk.Button(button_frame, text="Start Processing", command=self.start_processing, style='Custom.TButton')
-        self.process_button.pack(side=tk.LEFT, padx=5)
+        self.style.configure('Start.TButton', 
+                           padding=12, 
+                           font=('Segoe UI', 10, 'bold'),
+                           background=self.colors['success'],
+                           foreground='white')
         
-        self.cancel_button = ttk.Button(button_frame, text="Cancel", command=self.cancel_processing, style='Custom.TButton')
-        self.cancel_button.pack(side=tk.LEFT, padx=5)
+        self.style.map('Start.TButton',
+                      background=[('active', '#229954')])
+        
+        self.style.configure('Cancel.TButton', 
+                           padding=12, 
+                           font=('Segoe UI', 10, 'bold'),
+                           background=self.colors['warning'],
+                           foreground='white')
+        
+        self.style.map('Cancel.TButton',
+                      background=[('active', '#c0392b')])
+        
+        self.process_button = ttk.Button(button_frame, 
+                                        text="▶ Start Processing", 
+                                        command=self.start_processing, 
+                                        style='Start.TButton')
+        self.process_button.pack(side=tk.LEFT, padx=8)
+        
+        self.cancel_button = ttk.Button(button_frame, 
+                                       text="✖ Cancel", 
+                                       command=self.cancel_processing, 
+                                       style='Cancel.TButton')
+        self.cancel_button.pack(side=tk.LEFT, padx=8)
 
     def create_footer(self):
         footer_frame = ttk.Frame(self.root, style='Custom.TFrame')
-        footer_frame.pack(fill=tk.X, padx=20, pady=10)
-        ttk.Label(footer_frame, text="Open Source Photo Enhancement Tool", style='Header.TLabel').pack()
+        footer_frame.pack(fill=tk.X, padx=20, pady=(15,10))
+        
+        separator = ttk.Separator(footer_frame, orient='horizontal')
+        separator.pack(fill=tk.X, pady=(0,10))
+        
+        info_label = ttk.Label(footer_frame, 
+                             text="💝 Open Source • Made with Python", 
+                             font=('Segoe UI', 10),
+                             foreground='#7f8c8d',
+                             background=self.colors['bg'])
+        info_label.pack()
 
     def create_exit_button(self):
         exit_frame = ttk.Frame(self.root, style='Custom.TFrame')
-        exit_frame.pack(fill=tk.X, padx=20, pady=10)
-        ttk.Button(exit_frame, text="Exit", command=self.root.quit, style='Custom.TButton').pack(side=tk.RIGHT)
+        exit_frame.pack(fill=tk.X, padx=20, pady=(5,15))
+        
+        self.style.configure('Exit.TButton', 
+                           padding=10, 
+                           font=('Segoe UI', 9),
+                           background=self.colors['bg_secondary'],
+                           foreground=self.colors['fg'])
+        
+        self.style.map('Exit.TButton',
+                      background=[('active', '#7f8c8d')])
+        
+        ttk.Button(exit_frame, 
+                  text="Exit Application", 
+                  command=self.root.quit, 
+                  style='Exit.TButton').pack(side=tk.RIGHT)
 
     def center_window(self):
         self.root.update_idletasks()
