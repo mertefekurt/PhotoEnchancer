@@ -342,6 +342,7 @@ class ImageProcessorGUI:
                   style='Exit.TButton').pack(side=tk.RIGHT)
 
     def center_window(self):
+        # center the window on screen
         self.root.update_idletasks()
         width = self.root.winfo_width()
         height = self.root.winfo_height()
