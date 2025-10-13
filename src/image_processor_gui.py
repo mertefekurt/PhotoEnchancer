@@ -380,6 +380,7 @@ class ImageProcessorGUI:
             self.status_var.set("Canceling process...")
 
     def start_processing(self):
+        # start the image processing in a separate thread
         if not self.validate_inputs():
             return
         
