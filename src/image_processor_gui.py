@@ -352,6 +352,7 @@ class ImageProcessorGUI:
         self.root.geometry(f'{width}x{height}+{x}+{y}')
 
     def select_input_folder(self):
+        # open folder selection dialog for input
         folder = filedialog.askdirectory(title="Select Input Folder", initialdir=os.path.expanduser("~"))
         if folder:
             self.input_folder.set(folder)
