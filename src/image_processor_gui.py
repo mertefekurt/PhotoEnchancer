@@ -91,6 +91,7 @@ class ImageProcessorGUI:
         self.cancel_flag = False
 
     def load_settings(self):
+        # load saved settings from json file
         try:
             with open('settings.json', 'r') as f:
                 settings = json.load(f)
@@ -98,6 +99,7 @@ class ImageProcessorGUI:
                 self.contrast_value = settings.get('contrast', 1.1)
                 self.saturation_value = settings.get('saturation', 1.05)
         except:
+            # use default values if file not found
             self.brightness_value = 1.27
             self.contrast_value = 1.1
             self.saturation_value = 1.05
