@@ -434,6 +434,7 @@ class ImageProcessorGUI:
                 self.progress['value'] = progress
                 self.root.update_idletasks()
             
+            # show completion or cancellation message
             if self.cancel_flag:
                 self.status_var.set("Process canceled")
                 messagebox.showinfo("Canceled", "Process was canceled by user.")
