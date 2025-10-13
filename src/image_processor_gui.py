@@ -429,6 +429,7 @@ class ImageProcessorGUI:
                 if enhancer.process_image(input_path, output_path):
                     processed_count += 1
                 
+                # update progress bar
                 progress = (i + 1) / total_files * 100
                 self.progress['value'] = progress
                 self.root.update_idletasks()
