@@ -7,6 +7,8 @@ import threading
 import json
 from io import BytesIO
 
+# main gui class for photo enhancement application
+
 class ImageProcessorGUI:
     def __init__(self, root):
         self.root = root
