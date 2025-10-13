@@ -56,7 +56,7 @@ A modern, open-source photo processing application with a beautiful UI that auto
    python src/image_processor_gui.py
    ```
 
-## 📖 Usage
+## 📖 How to Use
 
 1. **Select Input Folder**: Click "Browse..." next to Input to select the folder containing your images
 2. **Select Output Folder**: Choose where you want the enhanced images to be saved
