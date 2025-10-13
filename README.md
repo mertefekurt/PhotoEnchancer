@@ -89,3 +89,4 @@ This project is open source and available under the MIT License.
 - Settings are automatically saved between sessions
 - Use the "Reset to Defaults" button to restore original values
 - You can cancel processing at any time without losing completed images
+- Enhanced images are saved with "enhanced_" prefix
