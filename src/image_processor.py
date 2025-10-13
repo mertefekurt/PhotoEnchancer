@@ -15,12 +15,15 @@ class ImageEnhancer:
         try:
             img = Image.open(input_path)
             
+            # apply brightness enhancement
             enhancer = ImageEnhance.Brightness(img)
             enhanced = enhancer.enhance(self.brightness_factor)
             
+            # apply contrast enhancement
             contrast = ImageEnhance.Contrast(enhanced)
             enhanced = contrast.enhance(self.contrast_factor)
             
+            # apply saturation enhancement
             saturation = ImageEnhance.Color(enhanced)
             enhanced = saturation.enhance(self.saturation_factor)
             
