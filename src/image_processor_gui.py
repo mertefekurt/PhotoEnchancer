@@ -361,6 +361,7 @@ class ImageProcessorGUI:
             self.output_folder.set(folder)
 
     def validate_inputs(self):
+        # check if folders are selected and valid
         if not self.input_folder.get():
             messagebox.showerror("Error", "Please select input folder!")
             return False
