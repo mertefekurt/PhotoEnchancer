@@ -11,6 +11,7 @@ class ImageEnhancer:
         self.saturation_factor = 1.05
 
     def process_image(self, input_path, output_path):
+        # process single image with enhancement settings
         try:
             img = Image.open(input_path)
             
