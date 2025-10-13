@@ -6,9 +6,9 @@ A modern, open-source photo processing application with a beautiful UI that auto
 
 - **Batch Processing**: Process multiple images at once with ease  
 - **Adjustable Enhancement Settings**:
-  - ☀️ Brightness (0.5 - 2.0)
-  - 🎨 Contrast (0.5 - 2.0)
-  - 🌈 Saturation (0.5 - 2.0)
+  - ☀️ Brightness (0.5 - 2.0)  
+  - 🎨 Contrast (0.5 - 2.0)  
+  - 🌈 Saturation (0.5 - 2.0)  
 - **Auto-Save Settings**: Your preferences are automatically saved  
 - **Modern UI**: Clean, dark-themed interface with intuitive controls  
 - **Real-time Preview**: Visual feedback with emoji indicators  
