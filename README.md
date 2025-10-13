@@ -83,7 +83,7 @@ Contributions are welcome! Feel free to:
 
 This project is open source and available under the MIT License.
 
-## 💡 Tips
+## 💡 Tips & Notes
 
 - Supported image formats: JPG, JPEG, PNG
 - Settings are automatically saved between sessions
