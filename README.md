@@ -58,12 +58,12 @@ A modern, open-source photo processing application with a beautiful UI that auto
 
 ## 📖 How to Use
 
-1. **Select Input Folder**: Click "Browse..." next to Input to select the folder containing your images
-2. **Select Output Folder**: Choose where you want the enhanced images to be saved
-3. **Adjust Settings**: Use the sliders to fine-tune brightness, contrast, and saturation
-4. **Start Processing**: Click the "▶ Start Processing" button
-5. **Monitor Progress**: Watch the progress bar and status updates
-6. **Find Your Images**: Enhanced images will be saved with "enhanced_" prefix in the output folder
+1. **Select Input Folder**: Click "Browse..." next to Input to select the folder containing your images  
+2. **Select Output Folder**: Choose where you want the enhanced images to be saved  
+3. **Adjust Settings**: Use the sliders to fine-tune brightness, contrast, and saturation  
+4. **Start Processing**: Click the "▶ Start Processing" button  
+5. **Monitor Progress**: Watch the progress bar and status updates  
+6. **Find Your Images**: Enhanced images will be saved with "enhanced_" prefix in the output folder  
 
 ## 🛠️ Technologies Used
 
