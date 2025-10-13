@@ -402,6 +402,7 @@ class ImageProcessorGUI:
             enhancer.saturation_factor = self.saturation_var.get()
             self.save_settings()
             
+            # get list of supported image files
             image_files = [f for f in os.listdir(self.input_folder.get())
                          if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
             total_files = len(image_files)
