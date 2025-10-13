@@ -375,6 +375,7 @@ class ImageProcessorGUI:
         return True
 
     def cancel_processing(self):
+        # handle cancellation request from user
         if messagebox.askyesno("Cancel", "Are you sure you want to cancel the process?"):
             self.cancel_flag = True
             self.status_var.set("Canceling process...")
