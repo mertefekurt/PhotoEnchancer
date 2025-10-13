@@ -27,6 +27,7 @@ class ImageEnhancer:
             saturation = ImageEnhance.Color(enhanced)
             enhanced = saturation.enhance(self.saturation_factor)
             
+            # save enhanced image with high quality
             enhanced.save(output_path, quality=95)
             
             return True
