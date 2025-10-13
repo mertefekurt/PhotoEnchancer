@@ -420,6 +420,7 @@ class ImageProcessorGUI:
                 if self.cancel_flag:
                     break
                 
+                # build input and output paths
                 input_path = os.path.join(self.input_folder.get(), filename)
                 output_path = os.path.join(self.output_folder.get(), f"enhanced_{filename}")
                 
