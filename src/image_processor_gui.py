@@ -2,14 +2,13 @@ import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
 from image_processor import ImageEnhancer
 import os
-from PIL import Image, ImageTk
 import threading
 import json
-from io import BytesIO
 
-# main gui class for photo enhancement application
 
 class ImageProcessorGUI:
+    """Tkinter front end for configuring and running batch image enhancement."""
+
     def __init__(self, root):
         self.root = root
         self.root.title("Photo Enhancer ✨")
@@ -96,21 +95,20 @@ class ImageProcessorGUI:
         self.cancel_flag = False
 
     def load_settings(self):
-        # load saved settings from json file
+        """Load persisted enhancement slider values, falling back to defaults."""
         try:
             with open('settings.json', 'r') as f:
                 settings = json.load(f)
                 self.brightness_value = settings.get('brightness', 1.27)
                 self.contrast_value = settings.get('contrast', 1.1)
                 self.saturation_value = settings.get('saturation', 1.05)
-        except:
-            # use default values if file not found
+        except (FileNotFoundError, json.JSONDecodeError):
             self.brightness_value = 1.27
             self.contrast_value = 1.1
             self.saturation_value = 1.05
 
     def save_settings(self):
-        # save current settings to json file
+        """Persist current enhancement settings for the next app launch."""
         settings = {
             'brightness': self.brightness_var.get(),
             'contrast': self.contrast_var.get(),
@@ -400,7 +398,7 @@ class ImageProcessorGUI:
         thread.start()
 
     def process_images(self):
-        # main processing loop for batch image enhancement
+        """Process selected images while keeping the GUI responsive."""
         try:
             enhancer = ImageEnhancer()
             # update enhancer settings from gui and save them
@@ -420,7 +418,7 @@ class ImageProcessorGUI:
             
             # process each image file
             processed_count = 0
-            for i, filename in enumerate(image_files):
+            for index, filename in enumerate(image_files):
                 if self.cancel_flag:
                     break
                 
@@ -434,7 +432,7 @@ class ImageProcessorGUI:
                     processed_count += 1
                 
                 # update progress bar
-                progress = (i + 1) / total_files * 100
+                progress = (index + 1) / total_files * 100
                 self.progress['value'] = progress
                 self.root.update_idletasks()
             
@@ -458,8 +456,8 @@ class ImageProcessorGUI:
 def main():
     # initialize and run the application
     root = tk.Tk()
-    app = ImageProcessorGUI(root)
+    ImageProcessorGUI(root)
     root.mainloop()
 
 if __name__ == "__main__":
-    main() 
+    main()
