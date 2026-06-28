@@ -125,6 +125,7 @@ class ImageProcessorGUI:
             json.dump(settings, f)
 
     def create_header(self):
+        """Create the application title and subtitle area."""
         header_frame = ttk.Frame(self.root, style='Custom.TFrame')
         header_frame.pack(fill=tk.X, padx=20, pady=(25,15))
         
@@ -142,6 +143,7 @@ class ImageProcessorGUI:
         subtitle_label.pack()
 
     def create_settings_section(self):
+        """Create enhancement sliders and the reset control."""
         settings_frame = ttk.LabelFrame(self.main_frame, 
                                       text="Enhancement Settings", 
                                       style='Custom.TLabelframe')
@@ -179,6 +181,7 @@ class ImageProcessorGUI:
         reset_btn.pack(side=tk.RIGHT)
 
     def create_slider(self, parent, label_text, default_value, callback, var_name):
+        """Create a labeled slider and bind it to a Tk variable."""
         frame = ttk.Frame(parent, style='Custom.TFrame')
         frame.pack(fill=tk.X, padx=15, pady=8)
         
@@ -228,6 +231,7 @@ class ImageProcessorGUI:
         self.save_settings()
 
     def create_folder_selection(self):
+        """Create input and output folder selection controls."""
         folder_frame = ttk.LabelFrame(self.main_frame, text="📁 Folder Selection", style='Custom.TLabelframe')
         folder_frame.pack(fill=tk.X, pady=(0, 10))
         
@@ -264,6 +268,7 @@ class ImageProcessorGUI:
         ttk.Button(output_frame, text="Browse...", command=self.select_output_folder, style='Custom.TButton').pack(side=tk.LEFT, padx=5)
 
     def create_progress_section(self):
+        """Create the progress bar, status label, and processing controls."""
         progress_frame = ttk.LabelFrame(self.main_frame, text="⚡ Processing", style='Custom.TLabelframe')
         progress_frame.pack(fill=tk.X, pady=(0, 10))
         
@@ -320,6 +325,7 @@ class ImageProcessorGUI:
         self.cancel_button.pack(side=tk.LEFT, padx=8)
 
     def create_footer(self):
+        """Create the footer metadata area."""
         footer_frame = ttk.Frame(self.root, style='Custom.TFrame')
         footer_frame.pack(fill=tk.X, padx=20, pady=(15,10))
         
@@ -334,6 +340,7 @@ class ImageProcessorGUI:
         info_label.pack()
 
     def create_exit_button(self):
+        """Create the application exit button."""
         exit_frame = ttk.Frame(self.root, style='Custom.TFrame')
         exit_frame.pack(fill=tk.X, padx=20, pady=(5,15))
         
@@ -401,7 +408,7 @@ class ImageProcessorGUI:
         self.process_button['state'] = 'disabled'
         self.progress['value'] = 0
         
-        thread = threading.Thread(target=self.process_images)
+        thread = threading.Thread(target=self.process_images, daemon=True)
         thread.start()
 
     def process_images(self):
@@ -463,7 +470,7 @@ class ImageProcessorGUI:
             self.cancel_flag = False
 
 def main():
-    # initialize and run the application
+    """Initialize and run the application."""
     root = tk.Tk()
     ImageProcessorGUI(root)
     root.mainloop()

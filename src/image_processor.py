@@ -9,6 +9,7 @@ class ImageEnhancer:
     """Apply a consistent brightness, contrast, and saturation pass to images."""
 
     def __init__(self):
+        """Initialize default enhancement factors used by the GUI."""
         self.brightness_factor = DEFAULT_BRIGHTNESS
         self.contrast_factor = DEFAULT_CONTRAST
         self.saturation_factor = DEFAULT_SATURATION
@@ -28,6 +29,6 @@ class ImageEnhancer:
 
             return True
 
-        except Exception as e:
-            print(f"Error processing {input_path}: {str(e)}")
+        except OSError as exc:
+            print(f"Error processing {input_path}: {exc}")
             return False
