@@ -1,9 +1,16 @@
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
-from image_processor import ImageEnhancer
+from image_processor import (
+    DEFAULT_BRIGHTNESS,
+    DEFAULT_CONTRAST,
+    DEFAULT_SATURATION,
+    ImageEnhancer,
+)
 import os
 import threading
 import json
+
+SUPPORTED_IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png')
 
 
 class ImageProcessorGUI:
@@ -99,13 +106,13 @@ class ImageProcessorGUI:
         try:
             with open('settings.json', 'r') as f:
                 settings = json.load(f)
-                self.brightness_value = settings.get('brightness', 1.27)
-                self.contrast_value = settings.get('contrast', 1.1)
-                self.saturation_value = settings.get('saturation', 1.05)
+                self.brightness_value = settings.get('brightness', DEFAULT_BRIGHTNESS)
+                self.contrast_value = settings.get('contrast', DEFAULT_CONTRAST)
+                self.saturation_value = settings.get('saturation', DEFAULT_SATURATION)
         except (FileNotFoundError, json.JSONDecodeError):
-            self.brightness_value = 1.27
-            self.contrast_value = 1.1
-            self.saturation_value = 1.05
+            self.brightness_value = DEFAULT_BRIGHTNESS
+            self.contrast_value = DEFAULT_CONTRAST
+            self.saturation_value = DEFAULT_SATURATION
 
     def save_settings(self):
         """Persist current enhancement settings for the next app launch."""
@@ -214,10 +221,10 @@ class ImageProcessorGUI:
         return slider
 
     def reset_settings(self):
-        # reset all sliders to default values
-        self.brightness_var.set(1.27)
-        self.contrast_var.set(1.1)
-        self.saturation_var.set(1.05)
+        """Reset all enhancement sliders to the shared default values."""
+        self.brightness_var.set(DEFAULT_BRIGHTNESS)
+        self.contrast_var.set(DEFAULT_CONTRAST)
+        self.saturation_var.set(DEFAULT_SATURATION)
         self.save_settings()
 
     def create_folder_selection(self):
@@ -345,7 +352,7 @@ class ImageProcessorGUI:
                   style='Exit.TButton').pack(side=tk.RIGHT)
 
     def center_window(self):
-        # center the window on screen
+        """Center the fixed-size application window on the active screen."""
         self.root.update_idletasks()
         width = self.root.winfo_width()
         height = self.root.winfo_height()
@@ -354,19 +361,19 @@ class ImageProcessorGUI:
         self.root.geometry(f'{width}x{height}+{x}+{y}')
 
     def select_input_folder(self):
-        # open folder selection dialog for input
+        """Open a folder selection dialog for source images."""
         folder = filedialog.askdirectory(title="Select Input Folder", initialdir=os.path.expanduser("~"))
         if folder:
             self.input_folder.set(folder)
 
     def select_output_folder(self):
-        # open folder selection dialog for output
+        """Open a folder selection dialog for processed output images."""
         folder = filedialog.askdirectory(title="Select Output Folder", initialdir=os.path.expanduser("~"))
         if folder:
             self.output_folder.set(folder)
 
     def validate_inputs(self):
-        # check if folders are selected and valid
+        """Validate that selected input and output folders are usable."""
         if not self.input_folder.get():
             messagebox.showerror("Error", "Please select input folder!")
             return False
@@ -379,13 +386,13 @@ class ImageProcessorGUI:
         return True
 
     def cancel_processing(self):
-        # handle cancellation request from user
+        """Ask for confirmation before requesting batch cancellation."""
         if messagebox.askyesno("Cancel", "Are you sure you want to cancel the process?"):
             self.cancel_flag = True
             self.status_var.set("Canceling process...")
 
     def start_processing(self):
-        # start the image processing in a separate thread
+        """Start image processing in a worker thread after validation."""
         if not self.validate_inputs():
             return
         
@@ -408,8 +415,10 @@ class ImageProcessorGUI:
             self.save_settings()
             
             # get list of supported image files
-            image_files = [f for f in os.listdir(self.input_folder.get())
-                         if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+            image_files = [
+                f for f in os.listdir(self.input_folder.get())
+                if f.lower().endswith(SUPPORTED_IMAGE_EXTENSIONS)
+            ]
             total_files = len(image_files)
             
             if total_files == 0:

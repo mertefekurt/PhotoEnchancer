@@ -1,16 +1,24 @@
 from PIL import Image, ImageEnhance
 
+DEFAULT_BRIGHTNESS = 1.27
+DEFAULT_CONTRAST = 1.1
+DEFAULT_SATURATION = 1.05
+
 
 class ImageEnhancer:
     """Apply a consistent brightness, contrast, and saturation pass to images."""
 
     def __init__(self):
-        self.brightness_factor = 1.27
-        self.contrast_factor = 1.1
-        self.saturation_factor = 1.05
+        self.brightness_factor = DEFAULT_BRIGHTNESS
+        self.contrast_factor = DEFAULT_CONTRAST
+        self.saturation_factor = DEFAULT_SATURATION
 
     def process_image(self, input_path, output_path):
-        """Enhance a single image and save it to the requested output path."""
+        """Enhance a single image and save it to the requested output path.
+
+        Returns:
+            bool: True when the image is saved successfully, otherwise False.
+        """
         try:
             with Image.open(input_path) as img:
                 enhanced = ImageEnhance.Brightness(img).enhance(self.brightness_factor)
