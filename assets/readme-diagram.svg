@@ -1,0 +1,33 @@
+<svg width="1280" height="520" viewBox="0 0 1280 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Photo Enhancer workflow diagram">
+<rect width="1280" height="520" rx="28" fill="#0f1f17"/>
+<text x="72" y="82" fill="#f7fee7" font-family="Inter, ui-sans-serif, system-ui" font-size="34" font-weight="800">Photo Enhancer workflow</text>
+<text x="72" y="122" fill="#bbf7d0" font-family="Inter, ui-sans-serif, system-ui" font-size="20">Batch photo enhancement with a desktop interface</text>
+<rect x="72" y="176" width="255" height="142" rx="22" fill="#84cc16" opacity=".18" stroke="#84cc16" stroke-width="3"/>
+<circle cx="106" cy="210" r="17" fill="#14b8a6" opacity=".9"/>
+<text x="101" y="217" fill="#0f1f17" font-family="Inter, ui-sans-serif, system-ui" font-size="18" font-weight="900">1</text>
+<text x="136" y="220" fill="#f7fee7" font-family="Inter, ui-sans-serif, system-ui" font-size="21" font-weight="800">Image input</text>
+<text x="96" y="268" fill="#bbf7d0" font-family="Inter, ui-sans-serif, system-ui" font-size="16">folder or file</text>
+<path d="M336 247h20" stroke="#14b8a6" stroke-width="5" stroke-linecap="round"/>
+<path d="M348 235l12 12-12 12" stroke="#14b8a6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="365" y="176" width="255" height="142" rx="22" fill="#f7fee7" opacity=".07" stroke="#14b8a6" stroke-width="3"/>
+<circle cx="399" cy="210" r="17" fill="#14b8a6" opacity=".9"/>
+<text x="394" y="217" fill="#0f1f17" font-family="Inter, ui-sans-serif, system-ui" font-size="18" font-weight="900">2</text>
+<text x="429" y="220" fill="#f7fee7" font-family="Inter, ui-sans-serif, system-ui" font-size="21" font-weight="800">Controls</text>
+<text x="389" y="268" fill="#bbf7d0" font-family="Inter, ui-sans-serif, system-ui" font-size="16">tune effect</text>
+<path d="M629 247h20" stroke="#14b8a6" stroke-width="5" stroke-linecap="round"/>
+<path d="M641 235l12 12-12 12" stroke="#14b8a6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="658" y="176" width="255" height="142" rx="22" fill="#f7fee7" opacity=".07" stroke="#84cc16" stroke-width="3"/>
+<circle cx="692" cy="210" r="17" fill="#14b8a6" opacity=".9"/>
+<text x="687" y="217" fill="#0f1f17" font-family="Inter, ui-sans-serif, system-ui" font-size="18" font-weight="900">3</text>
+<text x="722" y="220" fill="#f7fee7" font-family="Inter, ui-sans-serif, system-ui" font-size="21" font-weight="800">Processor</text>
+<text x="682" y="268" fill="#bbf7d0" font-family="Inter, ui-sans-serif, system-ui" font-size="16">Pillow / NumPy / UI</text>
+<path d="M922 247h20" stroke="#14b8a6" stroke-width="5" stroke-linecap="round"/>
+<path d="M934 235l12 12-12 12" stroke="#14b8a6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="951" y="176" width="255" height="142" rx="22" fill="#84cc16" opacity=".18" stroke="#14b8a6" stroke-width="3"/>
+<circle cx="985" cy="210" r="17" fill="#14b8a6" opacity=".9"/>
+<text x="980" y="217" fill="#0f1f17" font-family="Inter, ui-sans-serif, system-ui" font-size="18" font-weight="900">4</text>
+<text x="1015" y="220" fill="#f7fee7" font-family="Inter, ui-sans-serif, system-ui" font-size="21" font-weight="800">Saved output</text>
+<text x="975" y="268" fill="#bbf7d0" font-family="Inter, ui-sans-serif, system-ui" font-size="16">new image files</text>
+<path d="M72 460h1136" stroke="#84cc16" stroke-width="8" stroke-linecap="round" opacity=".56"/>
+<text x="72" y="492" fill="#bbf7d0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">DESKTOP LAB</text>
+</svg>

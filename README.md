@@ -1,17 +1,12 @@
 # Photo Enhancer
 
-A desktop batch enhancer for photos.
-
 ![Photo Enhancer cover](assets/readme-cover.svg)
 
-## What it does
+A desktop batch enhancer for JPG, JPEG, and PNG files. It keeps originals untouched and writes processed copies with an `enhanced_` prefix.
 
-- loads a folder of JPG/JPEG/PNG images
-- applies brightness, contrast, and saturation adjustments
-- keeps the original files untouched
-- writes enhanced copies with an `enhanced_` prefix
+## Processing path
 
-## Before / after
+![Processing diagram](assets/readme-diagram.svg)
 
 | Before | After |
 | --- | --- |
@@ -19,7 +14,7 @@ A desktop batch enhancer for photos.
 
 <img src="screenshots/Interface.png" alt="Main application window" width="700">
 
-## Run
+## Local run
 
 ```bash
 git clone https://github.com/mertefekurt/PhotoEnchancer.git
@@ -27,3 +22,9 @@ cd PhotoEnchancer
 python -m pip install -r requirements.txt
 python src/image_processor_gui.py
 ```
+
+## Notes
+
+- Originals stay untouched.
+- Processed files are written with a predictable prefix.
+- The interface is intentionally small enough for quick batch work.
