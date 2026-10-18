@@ -1,20 +1,12 @@
-# Photo Enhancer
+# Photoenchancer
 
-![Photo Enhancer cover](assets/readme-cover.svg)
+![Photoenchancer cover](assets/readme-cover.svg)
 
-A desktop batch enhancer for JPG, JPEG, and PNG files. It keeps originals untouched and writes processed copies with an `enhanced_` prefix.
+simple, open-source photo processing application. Powered by Tkinter.
 
-## Processing path
+`Python`
 
-![Processing diagram](assets/readme-diagram.svg)
-
-| Before | After |
-| --- | --- |
-| <img src="screenshots/Before.jpg" width="320" alt="Before enhancement"> | <img src="screenshots/After.jpg" width="320" alt="After enhancement"> |
-
-<img src="screenshots/Interface.png" alt="Main application window" width="700">
-
-## Local run
+## Start here
 
 ```bash
 git clone https://github.com/mertefekurt/PhotoEnchancer.git
@@ -23,8 +15,8 @@ python -m pip install -r requirements.txt
 python src/image_processor_gui.py
 ```
 
-## Notes
+## Repository
 
-- Originals stay untouched.
-- Processed files are written with a predictable prefix.
-- The interface is intentionally small enough for quick batch work.
+[Open the source on GitHub →](https://github.com/mertefekurt/PhotoEnchancer)
+
+[MIT License](LICENSE)
